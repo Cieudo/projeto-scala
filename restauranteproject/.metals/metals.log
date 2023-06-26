@@ -35,3 +35,27 @@ INFORMA합ES: Successfully applied 4 migrations to schema "PUBLIC", now at versio
 2023.06.24 20:59:02 INFO  Shutting down server
 2023.06.24 20:59:02 INFO  shutting down Metals
 2023.06.24 20:59:02 INFO  Exiting server
+2023.06.26 00:08:05 INFO  Started: Metals version 0.11.12+139-bc1e7dad-SNAPSHOT in folders 'C:\Users\franc\restauranteproject' for client Visual Studio Code 1.79.2.
+jun 26, 2023 12:08:05 AM org.flywaydb.core.internal.license.VersionPrinter printVersionOnly
+INFORMA합ES: Flyway Community Edition 9.20.0 by Redgate
+jun 26, 2023 12:08:05 AM org.flywaydb.core.internal.license.VersionPrinter printVersion
+INFORMA합ES: See release notes here: https://rd.gt/416ObMi
+jun 26, 2023 12:08:05 AM org.flywaydb.core.internal.license.VersionPrinter printVersion
+INFORMA합ES: 
+jun 26, 2023 12:08:06 AM org.flywaydb.core.internal.database.base.BaseDatabaseType createDatabase
+INFORMA합ES: Database: jdbc:h2:file:C:\Users\franc\restauranteproject\.metals\metals (H2 2.1)
+jun 26, 2023 12:08:06 AM org.flywaydb.core.internal.command.DbValidate validate
+INFORMA합ES: Successfully validated 4 migrations (execution time 00:00.026s)
+jun 26, 2023 12:08:06 AM org.flywaydb.core.internal.command.DbMigrate migrateGroup
+INFORMA합ES: Current version of schema "PUBLIC": 4
+jun 26, 2023 12:08:06 AM org.flywaydb.core.internal.command.DbMigrate logSummary
+INFORMA합ES: Schema "PUBLIC" is up to date. No migration necessary.
+2023.06.26 00:08:06 INFO  time: initialize in 0.76s
+2023.06.26 00:08:07 WARN  Build server is not auto-connectable.
+2023.06.26 00:08:07 WARN  no build tool detected in workspace 'C:\Users\franc\restauranteproject'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+2023.06.26 00:08:07 WARN  no build target for: C:\Users\franc\restauranteproject\src\scala\BancoDeDados.scala
+2023.06.26 00:08:13 INFO  no build target found for C:\Users\franc\restauranteproject\src\scala\BancoDeDados.scala. Using presentation compiler with project's scala-library version: 3.3.0
+2023.06.26 00:08:16 INFO  time: code lens generation in 9.22s
+2023.06.26 00:10:24 INFO  Shutting down server
+2023.06.26 00:10:24 INFO  shutting down Metals
+2023.06.26 00:10:24 INFO  Exiting server
