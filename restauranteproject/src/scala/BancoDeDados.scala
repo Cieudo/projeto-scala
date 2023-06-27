@@ -1,5 +1,3 @@
-package scala
-
 import scala.io.StdIn
 import models.{Cliente, Mesa, Pedido, Prato}
 
@@ -71,7 +69,7 @@ object BancoDeDados {
     println("Digite o identificador do item pedido:")
     val itemPedidoId = StdIn.readInt()
 
-    println("Digite o identificador da mesa onde o pedido foi realizado:")
+    println("Digite o número da mesa onde o pedido foi realizado:")
     val mesaId = StdIn.readInt()
 
     println("Digite o identificador do cliente que fez o pedido:")
@@ -90,13 +88,13 @@ object BancoDeDados {
     pedidos.filter(_.clienteId == clienteId)
   }
 
-  def getPedidosPorMesa(mesaId: Int): List[Pedido] = {
+  def recuperarPedidosPorMesa(mesaId: Int): List[Pedido] = {
     pedidos.filter(_.mesaId == mesaId)
   }
 
 
   def adicionarPrato(): Unit = {
-    println("Digite o nome do prato:")
+    println("Digite o nome do prato ou bebida:")
     val nome = StdIn.readLine()
 
     println("Digite a descrição do prato:")
@@ -110,6 +108,4 @@ object BancoDeDados {
 
     println("Prato adicionado com sucesso!")
   }
-
-
 }
