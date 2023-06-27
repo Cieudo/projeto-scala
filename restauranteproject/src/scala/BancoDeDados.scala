@@ -11,6 +11,14 @@ object BancoDeDados {
     novoId
   }
 
+  def getNovoIdPrato(): Int = {
+    val novoId = contadorPrato
+    contadorPrato += 1
+    novoId
+  }
+  var contadorPrato: Int = 1
+
+
   def adicionarMesa(): Unit = {
     println("Digite a capacidade máxima da mesa:")
     val capacidadeMaxima = StdIn.readInt()
@@ -84,17 +92,32 @@ object BancoDeDados {
     println("Pedido adicionado com sucesso!")
   }
 
-  def getPedidosPorCliente(clienteId: Int): List[Pedido] = {
-    pedidos.filter(_.clienteId == clienteId)
+  def getPedidosPorCliente(clienteId: Int): List[(Pedido, String)] = {
+    pedidos
+      .filter(_.clienteId == clienteId)
+      .flatMap { pedido =>
+        val prato = cardapio.find(_.id == pedido.itemId)
+        prato.map(p => (pedido, p.nome))
+      }
   }
 
-  def recuperarPedidosPorMesa(mesaId: Int): List[Pedido] = {
-    pedidos.filter(_.mesaId == mesaId)
+
+  def recuperarPedidosPorMesa(mesaId: Int): List[(Pedido, String)] = {
+    pedidos
+      .filter(_.mesaId == mesaId)
+      .flatMap { pedido =>
+        val prato = cardapio.find(_.id == pedido.itemId)
+        prato.map(p => (pedido, p.nome))
+      }
   }
 
+
+  def recuperarCardapio(): List[Prato] = {
+    cardapio
+  }
 
   def adicionarPrato(): Unit = {
-    println("Digite o nome do prato ou bebida:")
+    println("Digite o nome do prato:")
     val nome = StdIn.readLine()
 
     println("Digite a descrição do prato:")
@@ -105,6 +128,9 @@ object BancoDeDados {
 
     println("Digite o preço do prato:")
     val preco = StdIn.readDouble()
+
+    val novoPrato = Prato(getNovoIdPrato(), nome, descricao, categoria, preco)
+    cardapio = novoPrato :: cardapio
 
     println("Prato adicionado com sucesso!")
   }
