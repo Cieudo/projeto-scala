@@ -1,0 +1,11 @@
+ID:1
+Nome:Lasanha
+Descrição:otimo prato a tres camadas de queijos
+Categoria:Principal
+Preço:15.0
+
+ID:2
+Nome:Sorvete
+Descrição:se delicie com nossos variados sabores de sorvete
+Categoria:Sobremesa
+Preço:8.0

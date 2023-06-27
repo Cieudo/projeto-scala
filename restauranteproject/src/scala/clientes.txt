@@ -1,0 +1,9 @@
+ID:1
+Nome:Maria
+Telefone:123456789
+E-mail:maria1@example.com
+
+ID:2
+Nome:João
+Telefone:987654321
+E-mail:joao2@example.com

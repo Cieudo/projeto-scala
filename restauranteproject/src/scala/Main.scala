@@ -11,6 +11,24 @@ object Main {
       println("1. Adicionar Prato ao Cardapio")
       println("2. Adicionar cliente")
       println("3. Adicionar pedido ao Cliente")
+      val escolha = StdIn.readInt()
+
+      escolha match {
+        case 1 => BancoDeDados.adicionarPrato()
+        case 2 => BancoDeDados.adicionarCliente()
+        case 3 => BancoDeDados.adicionarPedido()
+        case _ => println("Opção inválida")
+      }
+
+      println("Deseja continuar? (S/N)")
+      val resposta = StdIn.readLine().toUpperCase()
+      continua = resposta == "S"
+    }
+
+    continua = true // Resetar a variável "continua" para verdadeiro
+
+    while (continua) {
+      println("\nProcesso anterior concluído. Agora, escolha uma opção:")
       println("4. Exibir clientes")
       println("5. Exibir pedidos por id do Cliente")
       println("6. Exibir pedidos por id da Mesa do Cliente")
@@ -18,9 +36,6 @@ object Main {
       val escolha = StdIn.readInt()
 
       escolha match {
-        case 1 => BancoDeDados.adicionarPrato()
-        case 2 => BancoDeDados.adicionarCliente()
-        case 3 => BancoDeDados.adicionarPedido()
         case 4 => BancoDeDados.exibirClientes()
         case 5 =>
           println("Digite o identificador do cliente:")
@@ -40,7 +55,6 @@ object Main {
           } else {
             println(s"Nenhum pedido encontrado para o cliente $clienteId.")
           }
-
 
         case 6 =>
           println("Digite o identificador da mesa:")
@@ -78,6 +92,7 @@ object Main {
           }
         case _ => println("Opção inválida")
       }
+
       println("Deseja continuar? (S/N)")
       val resposta = StdIn.readLine().toUpperCase()
       continua = resposta == "S"
