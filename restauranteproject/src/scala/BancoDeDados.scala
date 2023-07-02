@@ -1,5 +1,4 @@
 import scala.io.StdIn
-import scala.io.Source
 import models.{Cliente, Mesa, Pedido, Prato}
 
 object BancoDeDados {
@@ -29,6 +28,8 @@ object BancoDeDados {
   }
 
   var clientes: List[Cliente] = List()
+
+
   var contadorCliente: Int = 1
 
   def getNovoIdCliente(): Int = {
@@ -68,8 +69,14 @@ object BancoDeDados {
     }
   }
 
-
-  var cardapio: List[Prato] = List()
+  var cardapio: List[Prato] = List(
+    Prato(getNovoIdPrato(), "Macarrão à Bolonhesa", "Macarrão com molho de tomate e carne moída", "Massas", 20.0),
+    Prato(getNovoIdPrato(), "Frango Grelhado", "Peito de frango grelhado com acompanhamentos", "Pratos Principais", 25.0),
+    Prato(getNovoIdPrato(), "Salada Caesar", "Salada com alface, frango, croutons e molho caesar", "Saladas", 15.0),
+    Prato(getNovoIdPrato(), "Sorvete de Chocolate", "Sorvete cremoso sabor chocolate", "Sobremesas", 10.0),
+    Prato(getNovoIdPrato(), "Coca-Cola", "Refrigerante sabor cola", "Bebidas", 5.0),
+    Prato(getNovoIdPrato(), "Suco de Maracujá", "Suco natural da fruta", "Bebidas", 7.0),
+  )
   var pedidos: List[Pedido] = List()
   var contadorPedido: Int = 1
 
@@ -140,63 +147,4 @@ object BancoDeDados {
 
     println("Prato adicionado com sucesso!")
   }
-
-  def carregarPratos(): List[Prato] = {
-    val arquivo = Source.fromFile("prato.txt")
-    val linhas = arquivo.getLines().toList
-    arquivo.close()
-
-    var pratos: List[Prato] = List.empty
-    var pratoBuilder: Option[Prato.Builder] = None
-
-    for (linha <- linhas) {
-      if (linha.startsWith("ID:")) {
-        val pratoId = linha.substring(3).toInt
-        pratoBuilder = Some(Prato.Builder(pratoId))
-      } else if (linha.startsWith("Nome:")) {
-        pratoBuilder.foreach(_.nome(linha.substring(5)))
-      } else if (linha.startsWith("Descrição:")) {
-        pratoBuilder.foreach(_.descricao(linha.substring(10)))
-      } else if (linha.startsWith("Categoria:")) {
-        pratoBuilder.foreach(_.categoria(linha.substring(11)))
-      } else if (linha.startsWith("Preço:")) {
-        val preco = linha.substring(6).toDouble
-        pratoBuilder.foreach(_.preco(preco))
-        pratoBuilder.foreach { builder =>
-          pratos = builder.build() :: pratos
-        }
-        pratoBuilder = None
-      }
-    }
-
-    pratos.reverse
-  }
-
-  def carregarClientes(): List[Cliente] = {
-    val arquivo = Source.fromFile("clientes.txt")
-    val linhas = arquivo.getLines().toList
-    arquivo.close()
-
-    var clientes: List[Cliente] = List.empty
-    var clienteBuilder: Option[Cliente.Builder] = None
-
-    for (linha <- linhas) {
-      if (linha.startsWith("ID:")) {
-        val clienteId = linha.substring(3).toInt
-        clienteBuilder = Some(Cliente.Builder(clienteId))
-      } else if (linha.startsWith("Nome:")) {
-        clienteBuilder.foreach(_.nome(linha.substring(5)))
-      } else if (linha.startsWith("Telefone:")) {
-        clienteBuilder.foreach(_.telefone(linha.substring(9)))
-      } else if (linha.startsWith("E-mail:")) {
-        clienteBuilder.foreach(_.email(linha.substring(7)))
-        clienteBuilder.foreach { builder =>
-          clientes = builder.build() :: clientes
-        }
-        clienteBuilder = None
-      }
-    }
-    clientes.reverse
-  }
-
 }
