@@ -76,6 +76,11 @@ object BancoDeDados {
     Prato(getNovoIdPrato(), "Sorvete de Chocolate", "Sorvete cremoso sabor chocolate", "Sobremesas", 10.0),
     Prato(getNovoIdPrato(), "Coca-Cola", "Refrigerante sabor cola", "Bebidas", 5.0),
     Prato(getNovoIdPrato(), "Suco de Maracujá", "Suco natural da fruta", "Bebidas", 7.0),
+    Prato(getNovoIdPrato(), "Lasanha de Queijo", "Lasanha com camadas de queijo e molho de tomate", "Massas", 22.0),
+    Prato(getNovoIdPrato(), "Salmão Assado", "Salmão assado com ervas finas e legumes", "Pratos Principais", 30.0),
+    Prato(getNovoIdPrato(), "Salada Caprese", "Salada com tomate, muçarela de búfala, manjericão e azeite", "Saladas", 18.0),
+    Prato(getNovoIdPrato(), "Risoto de Cogumelos", "Risoto cremoso com cogumelos frescos", "Pratos Principais", 28.0),
+    Prato(getNovoIdPrato(), "Espaguete ao Molho Pesto", "Espaguete com molho pesto de manjericão e queijo parmesão", "Massas", 23.0)
   )
   var pedidos: List[Pedido] = List()
   var contadorPedido: Int = 1
@@ -124,6 +129,9 @@ object BancoDeDados {
       }
   }
 
+  def recuperarMesasDisponiveis(): List[Mesa] = {
+    mesa.filterNot(m => pedidos.exists(_.mesaId == m.id))
+  }
 
   def recuperarCardapio(): List[Prato] = {
     cardapio

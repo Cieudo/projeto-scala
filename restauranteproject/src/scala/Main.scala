@@ -14,7 +14,7 @@ object Main {
       println("5. Exibir pedidos por Cliente")
       println("6. Exibir pedidos por id da Mesa do Cliente")
       println("7. Exibir Cardapio Disponpivel")
-      println("\nEscolha uma opção:")
+      println("Escolha uma opção:")
       val escolha = StdIn.readInt()
 
       escolha match {
